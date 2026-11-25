@@ -1,0 +1,26 @@
+LA CLASÍ — VERSIÓN CON DATOS COMPARTIDOS EN NETLIFY
+
+CONTENIDO
+- index.html: página pública
+- netlify/functions/stats.mjs: función que lee/guarda estadísticas
+- netlify.toml: configuración de Netlify
+- package.json: dependencia Netlify Blobs
+
+IMPORTANTE
+Esta versión necesita desplegar también la función de Netlify. No basta con subir únicamente index.html ni con sustituir el archivo en una publicación estática.
+
+DESPLIEGUE
+1. Descomprime esta carpeta.
+2. Despliega el proyecto completo en Netlify mediante un repositorio Git conectado o Netlify CLI. Netlify Drop puede publicar archivos estáticos, pero para desplegar funciones es preferible Git o CLI.
+3. En Netlify abre: Project configuration > Environment variables.
+4. Añade la variable LA_CLASI_ADMIN_CODE con el valor que quieras usar como código de administrador.
+   No uses un código fácil de adivinar. El valor se configura en Netlify, no en index.html.
+5. Vuelve a desplegar el sitio para que la función reciba la variable.
+
+Después de desplegar:
+- Los visitantes pueden leer las estadísticas.
+- La función solo acepta cambios si recibe el código configurado en la variable.
+- Los datos se guardan en Netlify Blobs y se comparten para todas las visitas al mismo sitio.
+
+NOTA SOBRE DATOS ANTERIORES
+Las estadísticas que estaban guardadas solo en el almacenamiento local del navegador no se transfieren automáticamente a la nueva base compartida. Después de publicar, habrá que volver a introducirlas una vez desde el modo administrador.
